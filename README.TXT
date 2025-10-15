@@ -6,6 +6,10 @@ This project is part of the material for the book
    Sixth edition
    David J. Barnes and Michael Kölling
    Pearson Education, 2016
+   
+   NEW AUTHOR JAMES PATTI
+   
+   GOAL MAKE A BOXBOUNCE METHOD.
 
 This project is discussed in chapter 6.
 

@@ -18,6 +18,13 @@ import java.awt.geom.*;
  * @author David J. Barnes
  * @author Bruce Quig
  * @author William Crosbie
+ * 
+ * 
+ * @author NEW James Patti
+ * 
+ * version 2025.15.10   
+ * 
+ * goal to write a new method "boxBounce" which draws a box and makes some balls bounce.
  *
  * @version 2025.10.06
  */
