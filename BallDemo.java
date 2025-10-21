@@ -6,6 +6,11 @@ import java.awt.Color;
  *
  * @author Michael Kölling and David J. Barnes
  * @version 2016.02.29
+ * 
+ * @ new Author: James Patti
+ * Version 2025.21.25 (due 27th)
+ * 
+ * GOAL make a new method "boxBounce'
  */
 
 public class BallDemo   
@@ -29,10 +34,15 @@ public class BallDemo
      * boxBounce - simulate 5-50 balls bouncing within a box
      * 
      * @param numOfBalls number of balls to simulate bouncing, clamped between 5-50. 
+     * oh...already pre-made.. ok fill this out.
+     * 2param numofBalls (int?)
      */
-    public void boxBounce()
+    public void boxBounce(int numOfBalls)
     {
-        // you must implement this
+           int ballAmount = numOfBalls; //set the number of balls for animation
+           
+           //we need to draw the canvas...
+           box.draw();
     }
     
     /**
@@ -66,4 +76,6 @@ public class BallDemo
             }
         }
     }
+    
+    
 }
