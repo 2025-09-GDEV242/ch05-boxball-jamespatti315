@@ -1,4 +1,7 @@
 import java.awt.Color;
+import java.util.Random;
+import java.util.Collections;
+import java.util.HashMap;
 
 /**
  * Class BallDemo - a short demonstration showing animation with the 
@@ -11,12 +14,22 @@ import java.awt.Color;
  * Version 2025.21.25 (due 27th)
  * 
  * GOAL make a new method "boxBounce'
+ * 
+ * note: books says need a collection so arraylist,hashmap or hashset.
+ * 2 need random utility for setting random positions for balls.
+ * 5 to 30 balls needed
  */
 
 public class BallDemo   
 {
     private Canvas myCanvas;
     private Box box;
+    private Box boxBall;  //need to give the deets but do we need it to be class Box?
+    private HashMap<String,Ball>balls; //basic hashmap, may need to change if no ball class.but got hashmap 
+   
+    
+    
+     
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
@@ -36,13 +49,28 @@ public class BallDemo
      * @param numOfBalls number of balls to simulate bouncing, clamped between 5-50. 
      * oh...already pre-made.. ok fill this out.
      * 2param numofBalls (int?)
+     * 
+     * we ALSO need a new class the "BoxBall class" which balls bounce off wall of edge.
+     * 
+     * note can use BOUNCE to simulate at moment 2 balls for free...so just figure out how it all works!
      */
     public void boxBounce(int numOfBalls)
     {
            int ballAmount = numOfBalls; //set the number of balls for animation
+           //just quick corrector if below 5 balls or over 30
+           if(numOfBalls<5){
+               numOfBalls = 5;
+           } else if(numOfBalls > 30){
+               numOfBalls = 30;
+           }
            
            //we need to draw the canvas...
-           box.draw();
+            myCanvas = new Canvas("Bouncing balls", 600, 500);
+            box=new Box (100,100,500,400, myCanvas);
+            box.draw();
+          //ok now we use  a loop which takes the hashmap and draws the balls.
+           
+           //bounce.();
     }
     
     /**
