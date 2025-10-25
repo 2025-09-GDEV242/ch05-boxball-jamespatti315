@@ -10,7 +10,7 @@ import java.util.HashMap;
  * @author Michael Kölling and David J. Barnes
  * @version 2016.02.29
  * 
- * @ new Author: James Patti
+ * @ new Author: pasta Pizza
  * Version 2025.21.25 (due 27th)
  * 
  * GOAL make a new method "boxBounce'
@@ -25,11 +25,22 @@ public class BallDemo
     private Canvas myCanvas;
     private Box box;
     private Box boxBall;  //need to give the deets but do we need it to be class Box?
-    private HashMap<String,Ball>balls; //basic hashmap, may need to change if no ball class.but got hashmap 
-   
+    //private HashMap<String,Ball>balls; //basic hashmap, may need to change if no ball class.but got hashmap 
+    private HashMap<String, BoxBall> ballMap;  //error but fixed! ok needs to be a field not local variable!
     
     
      
+    /**
+     * a basic setter for the hash map which will store the balls, the parameter is a hasmap with 
+     * @stringkey integer key-partner
+     */
+    
+    public void  setBallMap(HashMap<String,BoxBall>ballMap){
+        this.ballMap = ballMap;
+        
+    }
+    
+    
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
@@ -69,6 +80,25 @@ public class BallDemo
             box=new Box (100,100,500,400, myCanvas);
             box.draw();
           //ok now we use  a loop which takes the hashmap and draws the balls.
+             Random rand = new Random();
+             ballMap = new HashMap<>();
+          //now lets make a random balls iterator!
+          for(int i = 1; i <= numOfBalls;i++){
+              //now to painfull make these balls work. like all got to be randomized,
+               int x = rand.nextInt(400) + 100;
+               int y = rand.nextInt(300) + 100;
+               int xSpeed = rand.nextInt(7) + 1;
+               int ySpeed = rand.nextInt(7) + 1;
+               int diameter = rand.nextInt(15) + 10;
+               Color color = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
+              
+              
+              BoxBall ball = new BoxBall(x,y,xSpeed,color,box,myCanvas);
+              
+              ballMap.put("ball"+ i,ball);
+              ball.draw();
+              
+          }
            
            //bounce.();
     }
