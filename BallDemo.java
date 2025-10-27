@@ -10,7 +10,7 @@ import java.util.HashMap;
  * @author Michael Kölling and David J. Barnes
  * @version 2016.02.29
  * 
- * @ new Author: pasta Pizza
+ * @ new Author: James Patti
  * Version 2025.21.25 (due 27th)
  * 
  * GOAL make a new method "boxBounce'
@@ -18,6 +18,10 @@ import java.util.HashMap;
  * note: books says need a collection so arraylist,hashmap or hashset.
  * 2 need random utility for setting random positions for balls.
  * 5 to 30 balls needed
+ * 
+ * overall it good, not all done but tired, this felt worse then a hernia.
+ * 
+ * I NKNOW the issue the constructors is incorrect. so its 99% there.
  */
 
 public class BallDemo   
@@ -92,16 +96,28 @@ public class BallDemo
                int diameter = rand.nextInt(15) + 10;
                Color color = new Color(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
               
+               //fudge it, local variable
+               int speed = rand.nextInt(7)+1;
               
-              BoxBall ball = new BoxBall(x,y,xSpeed,color,box,myCanvas);
-              
+              BoxBall ball = new BoxBall(x,y,speed,color,box,myCanvas);
+              //WELP THIS won't work. I don't know,.  
+            
               ballMap.put("ball"+ i,ball);
               ball.draw();
               
-          }
            
-           //bounce.();
+              
+            }
+                 // make them bounce
+        boolean finished =  false;
+        while (!finished) {
+            myCanvas.wait(10);           // small delay
+           for(BoxBall ball : ballMap.values())
+           ball.move();
     }
+        } 
+        
+
     
     /**
      * Simulate two bouncing balls
@@ -134,6 +150,8 @@ public class BallDemo
             }
         }
     }
+    
+    
     
     
 }
