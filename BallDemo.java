@@ -3,6 +3,7 @@ import java.util.Random;
 import java.util.Collections;
 import java.util.HashMap;
 
+
 /**
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
@@ -22,7 +23,13 @@ import java.util.HashMap;
  * overall it good, not all done but tired, this felt worse then a hernia.
  * 
  * I NKNOW the issue the constructors is incorrect. so its 99% there.
+ * 
+ * ok correction..no where...need to make walls detect balls and basically making a microgame...I wish was better but this was a miserable project.
+ * 
+ * 
+ * I tried, I am gonna work on next now, my brother burnt out, i;m burnt out. I trying to learn but this just too much at once.
  */
+
 
 public class BallDemo   
 {
@@ -33,6 +40,57 @@ public class BallDemo
     private HashMap<String, BoxBall> ballMap;  //error but fixed! ok needs to be a field not local variable!
     
     
+    
+    /**
+     * Here lets make the basic for a a boxBall object, setting what we need to shove into it
+     * we need: x position, y position, xspeed,y speed, diameter, color, canvas and a box type ...box
+     * 
+    */
+   
+   public class BoxBall {
+    private int xPosition;  //set x position
+    private int yPosition; //ditto y
+    private int xSpeed; //set speed on x
+    private int ySpeed; //ditto speed on y
+    private int diameter; //diameter of the "playfield"
+    private Color color; //so can color balls
+    private Canvas canvas; //so we can draw canvas
+    private Box box;   //a box..so we got the "box" to set balls bouncing.
+    
+    public BoxBall(int x, int y, int xSpeed, int ySpeed, int diameter, Color color, Box box, Canvas canvas) {
+        this.xPosition = x;
+        this.yPosition = y;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+        this.diameter = 30;
+        this.color = color;
+        this.canvas = canvas;
+        this.box = box;
+    }
+    //set positions and diameter down below.
+    public void draw(){
+        canvas.setForegroundColor(color);
+        canvas.fillCircle(xPosition,yPosition,diameter);
+    }
+   //erase balls to draw them. this ..THIS is literally a bastard, someday may get good but not today.
+      public void move() {
+        erase();
+        
+        xPosition += xSpeed;
+        yPosition += ySpeed;
+   
+   //now lets set the walls
+   
+   if(xPosition <=box.getLeft() || xPosition >= box.getRight() - diameter){
+       xSpeed = -xSpeed;
+   }
+   
+   if(yPosition <=box.getTop() || yPosition >= box.getBottom() - diameter){
+       ySpeed = -ySpeed;
+       }
+       draw();
+    }
+}
      
     /**
      * a basic setter for the hash map which will store the balls, the parameter is a hasmap with 
@@ -99,7 +157,7 @@ public class BallDemo
                //fudge it, local variable
                int speed = rand.nextInt(7)+1;
               
-              BoxBall ball = new BoxBall(x,y,speed,color,box,myCanvas);
+              BoxBall ball = new BoxBall(x, y, xSpeed, ySpeed, diameter, color, box, myCanvas);
               //WELP THIS won't work. I don't know,.  
             
               ballMap.put("ball"+ i,ball);
