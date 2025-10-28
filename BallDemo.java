@@ -57,12 +57,33 @@ public class BallDemo
     private Canvas canvas; //so we can draw canvas
     private Box box;   //a box..so we got the "box" to set balls bouncing.
     
+    
+    public int getLeft() {
+    return xPosition;
+}
+
+public int getRight() {
+    return xPosition;
+}
+
+public int getTop() {
+    return yPosition;
+}
+
+public int getBottom() {
+    return yPosition;
+}
+
+private void erase() {
+    canvas.eraseCircle(xPosition, yPosition, diameter);
+}
+    
     public BoxBall(int x, int y, int xSpeed, int ySpeed, int diameter, Color color, Box box, Canvas canvas) {
         this.xPosition = x;
         this.yPosition = y;
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
-        this.diameter = 30;
+        this.diameter = diameter;
         this.color = color;
         this.canvas = canvas;
         this.box = box;
@@ -72,7 +93,7 @@ public class BallDemo
         canvas.setForegroundColor(color);
         canvas.fillCircle(xPosition,yPosition,diameter);
     }
-   //erase balls to draw them. this ..THIS is literally a bastard, someday may get good but not today.
+   //erase balls to draw them. this ..THIS is literally a , someday may get good but not today.
       public void move() {
         erase();
         
@@ -81,11 +102,11 @@ public class BallDemo
    
    //now lets set the walls
    
-   if(xPosition <=box.getLeft() || xPosition >= box.getRight() - diameter){
+   if(xPosition <= getLeft() || xPosition >= getRight() - diameter){
        xSpeed = -xSpeed;
    }
    
-   if(yPosition <=box.getTop() || yPosition >= box.getBottom() - diameter){
+   if(yPosition <=getTop() || yPosition >= getBottom() - diameter){
        ySpeed = -ySpeed;
        }
        draw();
@@ -138,7 +159,7 @@ public class BallDemo
            }
            
            //we need to draw the canvas...
-            myCanvas = new Canvas("Bouncing balls", 600, 500);
+            //myCanvas = new Canvas("Bouncing balls", 600, 500);
             box=new Box (100,100,500,400, myCanvas);
             box.draw();
           //ok now we use  a loop which takes the hashmap and draws the balls.
